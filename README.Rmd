@@ -1,9 +1,11 @@
 ---
 output: github_document
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit the README.Rmd file -->
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -11,25 +13,25 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Lab report #1
 
-Follow the instructions posted at https://ds202-at-isu.github.io/labs.html for the lab assignment. The work is meant to be finished during the lab time, but you have time until Monday evening to polish things.
+Follow the instructions posted at <https://ds202-at-isu.github.io/labs.html> for the lab assignment.
+The work is meant to be finished during the lab time, but you have time until Monday evening to polish things.
 
+1.  inspect the first few lines of the data set:
 
-1. inspect the first few lines of the data set:
+-   what variables are there? of what type are the variables? what does each variable mean? what do we expect their data range to be?
 
-* what variables are there? of what type are the variables? what does each variable mean? what do we expect their data range to be?
+The data is giving us the Parcel ID, Address, and style of the address given, the parcel ID is an char, the address is a char and style is a factor.
+There is also the occupancy which is a factor, sale date is a date, and price is a dbl .
+There are many more variables in the data that are important to what is given and needed.
 
-The data is giving us the Parcel ID, Address, and style of the address given, the parcel ID is an char, the address is a char and style is a factor. There is also the occupancy which is a factor, sale date is a date, and price is a dbl
-. There are many more variables in the data that are important to what is given and needed.
-
-
-data range:
-The data range can be the minimum price of the house and the maximum price. We 
-can compare the highest house price and the lowest house price while focusing on the other variables that can affect the price. 
+data range: The data range can be the minimum price of the house and the maximum price.
+We can compare the highest house price and the lowest house price while focusing on the other variables that can affect the price.
 
 ```{r}
 library(classdata)
 str(ames)
 head(ames)
+summary(ames)
 
 min_price <- min(ames$`Sale Price`)
 
@@ -38,17 +40,20 @@ max_price <- max(ames$`Sale Price`)
 
 ```
 
+2.  is there a variable of special interest or focus?
 
-2. is there a variable of special interest or focus?
+"Sales Price" is numerical, so a histogram was created.
+The general pattern shows that most sale prices (\~6000 instances) were in the range of \$0-\$150,000.
+There are a few outliers around \$1,500,000 and \$2,000,000, which is easily seen on the histogram.
 
-"Sales Price" is numerical, so a histogram was created. The general pattern shows that most sale prices (~6000 instances) were in the range of $0-$150,000. There are a few outliers around $1,500,000 and $2,000,000, which is easily seen on the histogram.
+3.  start the exploration with the main variable: sales price
 
+-   what is the range of the variable?
+    draw a histogram for a numeric variable or a bar chart, if the variable is categorical.
+    what is the general pattern?
+    is there anything odd
 
-3. start the exploration with the main variable: sales price
-
-* what is the range of the variable? draw a histogram for a numeric variable or a bar chart, if the variable is categorical. what is the general pattern? is there anything odd
-
-* follow-up on oddities: see 4
+-   follow-up on oddities: see 4
 
 ```{r}
 library(ggplot2)
@@ -58,14 +63,28 @@ ggplot(ames, aes(x = `Sale Price`))+
   scale_x_continuous(labels = scales::number_format(scale = 1e-6)) +
   labs(title = "Histogram of Numbers", x = "House values (millions)", y = "Frequency")
 
+library(dplyr)
+ames2 <- filter(ames, ames$`Sale Price`< 1000000 & ames$`Sale Price`>0)
+ggplot(ames2, aes(x = `Sale Price`))+
+  geom_histogram(bins = 50) +  
+  scale_x_continuous(labels = scales::number_format(scale = 1e-6)) +
+  labs(title = "Histogram of Numbers", x = "House values (millions)", y = "Frequency")
 ```
 
-4. pick a variable that might be related to the main variable.
-* sale price, occupancy, total living area, bedrooms, year built
+4.  pick a variable that might be related to the main variable.
+
+
+-   sale price, occupancy, total living area, bedrooms, year built
+
 
 * what is the range of that variable? plot. describe the pattern.
 
-* what is the relationship to the main variable? plot a scatterplot, boxplot or facetted barcharts (dependening on the types of variables involved). Describe overall pattern, does this variable describe any oddities discovered in 3? Identify/follow-up on any oddities.
+
+-   what is the relationship to the main variable?
+    plot a scatterplot, boxplot or facetted barcharts (dependening on the types of variables involved).
+    Describe overall pattern, does this variable describe any oddities discovered in 3?
+    Identify/follow-up on any oddities.
+
 
 
 IDIVIDUAL VARIABLES: 
@@ -73,11 +92,19 @@ IDIVIDUAL VARIABLES:
 Individually: follow through with your line of investigation. 
 Include at least one plot that describes the relationship between sales prices and your variable. 
 Include one paragraph describing the pattern you see. Are there oddities? 
-Follow-up on (some of) them.
+
+
 ```{r}
+ggplot(ames2, aes(y=`Sale Price`, x=Occupancy))+
+  geom_point()
+
+ggplot(ames, aes(y=`Sale Price`, x=Occupancy))+
+  geom_point()
 
 ```
 
+In Occupancy, we can see that there is a correlation between different type of homes.
+Condominiums have the Highest max price, even though Single-Family homes has a more expensive average
 
   Total living area: Mazin
 Individually: follow through with your line of investigation. 
@@ -115,21 +142,35 @@ Include at least one plot that describes the relationship between sales prices a
 Include one paragraph describing the pattern you see. Are there oddities? 
 Follow-up on (some of) them.
 ```{r}
-
+ggplot(ames, aes(x = `Sale Price`, y = `Bedrooms`)) + 
+  geom_point() + geom_smooth()
 ```
+
+**This scatter plot shows that there is very little correlation between the amount of bedrooms compared to the sale price, which is very interesting. When buying a home, the number of bedrooms tends to be an important feature to a buyer. One common correlation between average-priced homes shows that more bedrooms tends to increase the sale price, but extending this to the more expensive houses shows that this trend is not linear.**
+
 
   Year built: Michaela 
 Individually: follow through with your line of investigation. 
 Include at least one plot that describes the relationship between sales prices and your variable. 
 Include one paragraph describing the pattern you see. Are there oddities? 
-Follow-up on (some of) them.
 
+
+There is a weak correlation between the year built and sale price. Most of the points on there graph are even across the years. In the beginning of 2000 we see multiple extreme outliers. We can see there are about 4 or 5 homes that sold for way more than the rest of the houses during that time period. 
 ```{r}
+library(ggplot2)
+library(tidyverse)
+
+ames %>% 
+  filter(YearBuilt != 0) %>% 
+  ggplot(aes(x = YearBuilt, y = `Sale Price`)) +
+  geom_point()
+
 
 ```
 
-
-Include your answers in this document (Rmd file). Make sure that it knits properly (into the md file). Upload both the Rmd and the md file to your repository.  
+Include your answers in this document (Rmd file).
+Make sure that it knits properly (into the md file).
+Upload both the Rmd and the md file to your repository.
 
 All submissions to the github repo will be automatically uploaded for grading once the due date is passed.
 Submit a link to your repository on Canvas (only one submission per team) to signal to the instructors that you are done with your submission.
