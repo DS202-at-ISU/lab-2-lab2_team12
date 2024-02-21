@@ -90,10 +90,10 @@ Are there oddities?
 Follow-up on (some of) them.
 
 ```{r}
-ggplot(ames2, aes(x=`Sale Price`, y=Occupancy))+
+ggplot(ames2, aes(y=`Sale Price`, x=Occupancy))+
   geom_point()
 
-ggplot(ames, aes(x=`Sale Price`, y=Occupancy))+
+ggplot(ames, aes(y=`Sale Price`, x=Occupancy))+
   geom_point()
 
 ```
