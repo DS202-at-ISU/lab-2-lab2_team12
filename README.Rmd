@@ -20,19 +20,25 @@ Follow the instructions posted at https://ds202-at-isu.github.io/labs.html for t
 
 
 ```{r}
+library(classdata)
+head(ames)st
 
 ```
 
 
 2. is there a variable of special interest or focus?
 
+Sale price 
+
 ```{r}
+
 
 ```
 
 3. start the exploration with the main variable:
 
-* what is the range of the variable? draw a histogram for a numeric variable or a bar chart, if the variable is categorical. what is the general pattern? is there anything odd?
+* what is the range of the variable? draw a histogram for a numeric variable or a bar chart, if the variable is categorical. what is the general pattern? is there anything odd
+
 * follow-up on oddities: see 4
 
 ```{r}
@@ -40,14 +46,15 @@ Follow the instructions posted at https://ds202-at-isu.github.io/labs.html for t
 ```
 
 4. pick a variable that might be related to the main variable.
+* sale price, occupancy, total living area, bedrooms, year built
+
 
 * what is the range of that variable? plot. describe the pattern.
+
 * what is the relationship to the main variable? plot a scatterplot, boxplot or facetted barcharts (dependening on the types of variables involved). Describe overall pattern, does this variable describe any oddities discovered in 3? Identify/follow-up on any oddities.
 ```{r}
 
 ```
-
-
 
 
 Include your answers in this document (Rmd file). Make sure that it knits properly (into the md file). Upload both the Rmd and the md file to your repository.  
