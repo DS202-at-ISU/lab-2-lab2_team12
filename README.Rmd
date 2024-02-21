@@ -96,8 +96,12 @@ Include at least one plot that describes the relationship between sales prices a
 Include one paragraph describing the pattern you see. Are there oddities? 
 Follow-up on (some of) them.
 ```{r}
-
+ggplot(ames, aes(x = `Sale Price`, y = `Bedrooms`)) + 
+  geom_point() + geom_smooth()
 ```
+
+**This scatter plot shows that there is very little correlation between the amount of bedrooms compared to the sale price, which is very interesting. When buying a home, the number of bedrooms tends to be an important feature to a buyer. One common correlation between average-priced homes shows that more bedrooms tends to increase the sale price, but extending this to the more expensive houses shows that this trend is not linear.**
+
 
   Year built: Michaela 
 Individually: follow through with your line of investigation. 
