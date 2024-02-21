@@ -50,6 +50,12 @@ lot area is the variable of focus because we believe it will have the greatest i
 * follow-up on oddities: see 4
 
 ```{r}
+library(ggplot2)
+
+ggplot(ames, aes(x = `Sale Price`))+
+  geom_histogram(bins = 50) +  
+  scale_x_continuous(labels = scales::number_format(scale = 1e-6)) +
+  labs(title = "Histogram of Numbers", x = "House values (millions)", y = "Frequency")
 
 ```
 
