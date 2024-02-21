@@ -18,8 +18,23 @@ Follow the instructions posted at https://ds202-at-isu.github.io/labs.html for t
 
 * what variables are there? of what type are the variables? what does each variable mean? what do we expect their data range to be?
 
+The data is giving us the Parcel ID, Address, and style of the address given, the parcel ID is an char, the address is a char and style is a factor. There is also the occupancy which is a factor, sale date is a date, and price is a dbl
+. There are many more variables in the data that are important to what is given and needed.
+
+
+data range:
+The data range can be the minimum price of the house and the maximum price. We 
+can compare the highest house price and the lowest house price while focusing on the other variables that can affect the price. 
 
 ```{r}
+library(classdata)
+ames
+str(ames)
+head(ames)
+
+min_price <- min(ames$`Sale Price`)
+
+max_price <- max(ames$`Sale Price`)
 
 ```
 
