@@ -56,14 +56,13 @@ lot area is the variable of focus because we believe it will have the greatest i
 4. pick a variable that might be related to the main variable.
 * sale price, occupancy, total living area, bedrooms, year built
 
-
 * what is the range of that variable? plot. describe the pattern.
 
 * what is the relationship to the main variable? plot a scatterplot, boxplot or facetted barcharts (dependening on the types of variables involved). Describe overall pattern, does this variable describe any oddities discovered in 3? Identify/follow-up on any oddities.
 
 
 IDIVIDUAL VARIABLES: 
-  Occupancy: 
+  Occupancy: Nicholas
 Individually: follow through with your line of investigation. 
 Include at least one plot that describes the relationship between sales prices and your variable. 
 Include one paragraph describing the pattern you see. Are there oddities? 
@@ -73,7 +72,7 @@ Follow-up on (some of) them.
 ```
 
 
-  Total living area: 
+  Total living area: Mazin
 Individually: follow through with your line of investigation. 
 Include at least one plot that describes the relationship between sales prices and your variable. 
 Include one paragraph describing the pattern you see. Are there oddities? 
@@ -83,7 +82,7 @@ Follow-up on (some of) them.
 ```
 
 
-  Bedrooms: 
+  Bedrooms: Carter
 Individually: follow through with your line of investigation. 
 Include at least one plot that describes the relationship between sales prices and your variable. 
 Include one paragraph describing the pattern you see. Are there oddities? 
@@ -92,7 +91,7 @@ Follow-up on (some of) them.
 
 ```
 
-  Year built: 
+  Year built: Michaela 
 Individually: follow through with your line of investigation. 
 Include at least one plot that describes the relationship between sales prices and your variable. 
 Include one paragraph describing the pattern you see. Are there oddities? 
