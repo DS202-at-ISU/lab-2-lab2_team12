@@ -30,6 +30,7 @@ can compare the highest house price and the lowest house price while focusing on
 library(classdata)
 str(ames)
 head(ames)
+summary(ames)
 
 min_price <- min(ames$`Sale Price`)
 
@@ -104,7 +105,16 @@ Include at least one plot that describes the relationship between sales prices a
 Include one paragraph describing the pattern you see. Are there oddities? 
 Follow-up on (some of) them.
 
+There is a weak correlation between the year built and sale price. Most of the points on there graph are even across the years. In the beginning of 2000 we see multiple extreme outliers. We can see there are about 4 or 5 homes that sold for way more than the rest of the houses during that time period. 
 ```{r}
+library(ggplot2)
+library(tidyverse)
+
+ames %>% 
+  filter(YearBuilt != 0) %>% 
+  ggplot(aes(x = YearBuilt, y = `Sale Price`)) +
+  geom_point()
+
 
 ```
 
