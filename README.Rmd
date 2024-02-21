@@ -41,7 +41,8 @@ max_price <- max(ames$`Sale Price`)
 
 2. is there a variable of special interest or focus?
 
-lot area is the variable of focus because we believe it will have the greatest influence on sale price. 
+"Sales Price" is numerical, so a histogram was created. The general pattern shows that most sale prices (~6000 instances) were in the range of $0-$150,000. There are a few outliers around $1,500,000 and $2,000,000, which is easily seen on the histogram.
+
 
 3. start the exploration with the main variable: sales price
 
@@ -50,6 +51,12 @@ lot area is the variable of focus because we believe it will have the greatest i
 * follow-up on oddities: see 4
 
 ```{r}
+library(ggplot2)
+
+ggplot(ames, aes(x = `Sale Price`))+
+  geom_histogram(bins = 50) +  
+  scale_x_continuous(labels = scales::number_format(scale = 1e-6)) +
+  labs(title = "Histogram of Numbers", x = "House values (millions)", y = "Frequency")
 
 ```
 
